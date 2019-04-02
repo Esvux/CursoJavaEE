@@ -1,5 +1,5 @@
-# Ejemplos del Curso de Jakarta EE
+# Ejemplos del Curso de Java EE
 ## Introducción
-Jakarta EE como plataforma de desarrollo para aplicaciones web robustas.
+Java EE como plataforma de desarrollo para aplicaciones web robustas.
 ## Servlets
 El primer bloque de la programación web moderna en Java.
