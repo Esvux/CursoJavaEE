@@ -40,17 +40,36 @@ public class ServletContactos extends HttpServlet {
             <th>Fullname</th>
             <th>email</th>
         </tr>
-        <!--Aqui iria la info de los contactos-->
+    
+        <!--Aqui iria la info de los contactos asi-->
+        <tr>
+            <td>juanpa</td>
+            <td>Juan Sajche</td>
+            <td>jp@correo.com</td>
+        </tr>
+    
      </table>
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try (PrintWriter out = resp.getWriter()) {
+            //Construir el encabezado de la tabla
+            out.append("<table border='1'>");
+            out.append("<tr>");
+            out.append("<th>Nickname</th>");
+            out.append("<th>Fullname</th>");
+            out.append("<th>email</th>");
+            out.append("</tr>");            
+            
             contactos.forEach((Contacto c) -> {
-                out.append("<p>");
-                out.append(c.getNickname());
-                out.append("</p>");
+                out.append("<tr>");
+                out.append("<td>" + c.getNickname() + "</td>");
+                out.append("<td>" + c.getFullname()+ "</td>");
+                out.append("<td>" + c.getEmail()+ "</td>");
+                out.append("</tr>");
             });
+            
+            out.append("</table>");
         }
     }
 
@@ -60,14 +79,9 @@ public class ServletContactos extends HttpServlet {
             HttpServletResponse resp
     ) throws ServletException, IOException {
         try (BufferedReader buffer = req.getReader()) {
-            JsonReader reader = Json.createReader(buffer);
-            JsonObject jsonObject = reader.readObject();
-            String nuevoNickname = jsonObject.getString("nickname");
-            String nuevoFullname = jsonObject.getString("fullname");
-            String nuevoEmail = jsonObject.getString("email");
-            Contacto nuevo = new Contacto(nuevoNickname, nuevoFullname, nuevoEmail);
+            Contacto nuevo = getContactoFromJson(buffer);
             contactos.add(nuevo);
-            System.err.println("Se agrego: " + nuevoNickname);
+            System.err.println("Se agrego: " + nuevo.getNickname());
         }
     }
     
@@ -80,5 +94,51 @@ public class ServletContactos extends HttpServlet {
      *     - Si no existe responder con un 404
      *     - Si se encuentra, reemplazarlo por el nuevo elemento
      */
+    @Override
+    protected void doPut(
+            HttpServletRequest req,  
+            HttpServletResponse resp
+    ) throws ServletException, IOException {
+        String nickname = req.getParameter("nickname");
+        if(nickname==null || nickname.trim().isEmpty()) {
+            //HTTP status -> 400 = Bad request
+            resp.setStatus(400);
+            return;
+        }
+        BufferedReader buffer = req.getReader();
+        PrintWriter out = resp.getWriter();
+        boolean encontrado = false;
+        
+//Verficar que exista el contacto con el nickname ingresado
+        for(Contacto c : contactos) {
+            //Si no es el que estoy buscando, continua a la siguiente iteración
+            if(! c.getNickname().equals(nickname)) {
+                continue;
+            }
+            //Lo encontré...
+            encontrado = true;
+            Contacto nuevo = getContactoFromJson(buffer);
+            c.setNickname(nuevo.getNickname());
+            c.setFullname(nuevo.getFullname());
+            c.setEmail(nuevo.getEmail());
+            
+            break;
+        }
+        if(encontrado) {
+            out.append("Contacto modificado exitosamente");
+        } else {
+            resp.setStatus(404);
+        }
+    }
+
+    private Contacto getContactoFromJson(BufferedReader buffer) {
+        JsonReader reader = Json.createReader(buffer);
+        JsonObject jsonObject = reader.readObject();
+        String nuevoNickname = jsonObject.getString("nickname");
+        String nuevoFullname = jsonObject.getString("fullname");
+        String nuevoEmail = jsonObject.getString("email");
+        Contacto nuevo = new Contacto(nuevoNickname, nuevoFullname, nuevoEmail);
+        return nuevo;
+    }
 
 }
