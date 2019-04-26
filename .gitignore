@@ -4,3 +4,5 @@ nb-configuration.xml
 /E03_Inventario/target/
 /E04_MoreServlets/target/
 /E05_Sesiones/target/
+/E07_ErrorMapping/target/
+/E06_Multipart/target/
