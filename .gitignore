@@ -1,8 +1,2 @@
 nb-configuration.xml
-/E01_Servlets/target/
-/E02_AgendaWeb/target/
-/E03_Inventario/target/
-/E04_MoreServlets/target/
-/E05_Sesiones/target/
-/E07_ErrorMapping/target/
-/E06_Multipart/target/
+*/target/*
