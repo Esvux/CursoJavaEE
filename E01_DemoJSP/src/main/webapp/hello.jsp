@@ -7,26 +7,14 @@
     </head>
 <body>
     <form method="GET">
-        <select name="operator">
-            <option value="add">Suma</option>
-            <option value="sub">Resta</option>
-        </select><br>
-        <label for="name">Valor 1</label><br>
+        <label for="name">Ingresa tu nombre</label><br>
         <input type="text" name="name"><br><br>
-        <input type="submit" value="Calcular">
+        <input type="submit" value="Saludar">
     </form>
     <% 
     String person = request.getParameter("name");
     
-    if(person == null || person.trim().isEmpty()) { 
-    
-        //Double.parseDouble(string);
-        //Integer.parseInt(string);
-        //Validar y obtener el primer numero > if
-        //Validar y obtener el segundo numero > if
-        //Segun sea el operador crear la respuesta > switch
-        //Si la respuesta no es null, mostrarla
-    
+    if(person == null || person.trim().isEmpty()) {     
     %>
         <h1>No hay nadie a quien saludar</h1>
     <%} else {%>
