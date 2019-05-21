@@ -1,6 +1,9 @@
 package com.academik.mvc.controller;
 
+import com.academik.mvc.dao.StudentDAO;
+import com.academik.mvc.model.Student;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/students/*")
 public class StudentController extends HttpServlet {
 
+    StudentDAO dao = new StudentDAO();
+    
     /**
      * Determina que "recurso" mostrar al usuario.
      */
@@ -31,14 +36,22 @@ public class StudentController extends HttpServlet {
                 break;
             case "/view":
                 redirectPage = "student-view.jsp";
+                Student sToView = setEntity(req, resp);
+                if(sToView==null)
+                    return;
                 break;
             case "/edit":
                 redirectPage = "student-edit.jsp";
+                Student sToEdit = setEntity(req, resp);
+                if(sToEdit==null)
+                    return;
                 break;
             case "/list":
             case "/":
             case "":
                 redirectPage = "student-list.jsp";
+                List<Student> students = dao.queryAll();
+                req.setAttribute("list_of_students", students);
                 break;
             default:
                 resp.sendRedirect(req.getContextPath() + "/students");
@@ -75,6 +88,22 @@ public class StudentController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+    }
+    
+    private Student setEntity(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String id = req.getParameter("id");
+        if (id == null) {
+            resp.sendRedirect(req.getContextPath() + "/students");
+            return null;
+        }
+        long _id = Long.parseLong(id);
+        Student student = dao.findById(_id);
+        if(student == null) {
+            resp.sendRedirect(req.getContextPath() + "/students");
+            return null;
+        }
+        req.setAttribute("single_student", student);
+        return student;
     }
     
 }
