@@ -13,7 +13,7 @@ public interface GeneralDAO<T> {
      * Propiedades o atributos que pueden utilizar todas las clases
      * que implementen GeneralDAO.
      */
-    CustomConnection conn = CustomConnection.getInstance();
+    CustomConnection CONN_WRAPPER = CustomConnection.getInstance();
     
     // Métodos pendientes de implementar
     List<T> queryAll();

@@ -1,6 +1,9 @@
 package com.academik.mvc.controller;
 
+import com.academik.mvc.dao.StudentDAO;
+import com.academik.mvc.model.Student;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/students/*")
 public class StudentController extends HttpServlet {
 
+    StudentDAO dao = new StudentDAO();
+    
     /**
      * Determina que "recurso" mostrar al usuario.
      */
@@ -30,6 +35,10 @@ public class StudentController extends HttpServlet {
                 redirectPage = "student-create.jsp";
                 break;
             case "/view":
+                //Obtengo el parametro desde la URL
+                long id = Long.parseLong(req.getParameter("id"));
+                Student sToView = dao.findById(id);
+                req.setAttribute("single_student", sToView);
                 redirectPage = "student-view.jsp";
                 break;
             case "/edit":
@@ -38,6 +47,8 @@ public class StudentController extends HttpServlet {
             case "/list":
             case "/":
             case "":
+                List<Student> allStudents = dao.queryAll();
+                req.setAttribute("list_of_students", allStudents);
                 redirectPage = "student-list.jsp";
                 break;
             default:

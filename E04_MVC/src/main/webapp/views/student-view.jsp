@@ -11,29 +11,28 @@
 
     <div class="row">
         <div class="col">Nombres</div>
-        <div class="col-2">${single_student.firstName}</div>
+        <div class="col">${single_student.firstName}</div>
     </div>
     <div class="row">
         <div class="col">Apellidos</div>
-        <div class="col-2">${single_student.lastName}</div>
+        <div class="col">${single_student.lastName}</div>
     </div>
     <div class="row">
         <div class="col">Correo electrónico</div>
-        <div class="col-2">${single_student.email}</div>
+        <div class="col">${single_student.email}</div>
     </div>
     <div class="row">
         <div class="col">Fecha de nacimiento</div>
-        <div class="col-2">${single_student.birthday}</div>
+        <div class="col">${single_student.birthday}</div>
     </div>
     <div class="row">
         <div class="col">Encargado (a)</div>
-        <div class="col-2">${single_student.guardian}"</div>
+        <div class="col">${single_student.guardian}</div>
     </div>
     <div class="row">
         <div class="col">Teléfono de contacto</div>
-        <div class="col-2">${single_student.contactPhone}"</div>
+        <div class="col">${single_student.contactPhone}</div>
     </div>
-
-    <a class="btn btn-primary" href="students/edit?id=${single_student.code}" value="Editar"/>
+    <a class="btn btn-primary" href="edit?id=${single_student.code}">Editar</a>
 
 <%@include file="../templates/footer.jsp" %>

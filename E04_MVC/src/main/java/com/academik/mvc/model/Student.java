@@ -81,4 +81,8 @@ public class Student {
         this.birthday = birthday;
     }
     
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
+    
 }

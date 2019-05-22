@@ -5,6 +5,10 @@
     <jsp:param name="custom-title" value="Academik | Estudiantes"/>
 </jsp:include>
 
+<!-- 
+Etiqueta que declara el objeto list_of_students 
+proveniente del StudentController, método doGet.
+-->
 <jsp:useBean 
     id="list_of_students"
     scope="request" 
@@ -17,6 +21,7 @@
             <th>Correo</th>
             <th>Encargado</th>
             <th>Contacto</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +31,10 @@
             <td><%= s.getEmail() %></td>
             <td><%= s.getGuardian() %></td>
             <td><%= s.getContactPhone() %></td>
+            <td>
+                <a class="btn btn-primary" href="edit?id=<%=s.getCode()%>">Editar</a>
+                <a class="btn btn-primary" href="view?id=<%=s.getCode()%>">Ver</a>
+            </td>
         </tr>
         <%}%>
     </tbody>
