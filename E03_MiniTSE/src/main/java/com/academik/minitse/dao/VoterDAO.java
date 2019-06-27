@@ -25,10 +25,13 @@ public class VoterDAO {
 
     @Transactional
     public List<Voter> findAll() {
+        //JPQL
         TypedQuery<Voter> query = em.createQuery(
-                "SELECT v.dpi, v.firstName, v.lastName, v.height FROM Voter v", Voter.class
+                "SELECT v.dpi, v.firstName, v.lastName, v.height FROM Voter v", 
+                Voter.class
         );
-        return query.getResultList();
+        List<Voter> result = query.getResultList();
+        return result;
     }
     
 }
