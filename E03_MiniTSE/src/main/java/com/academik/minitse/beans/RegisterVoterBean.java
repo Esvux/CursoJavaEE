@@ -59,7 +59,6 @@ public class RegisterVoterBean {
         v.setDpi(tempDpi);
         v.setFirstName(tempFirstName);
         v.setLastName(tempLastName);
-        v.setHeight(tempHeight);
         dao.register(v);
         return "voters";
     }

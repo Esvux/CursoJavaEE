@@ -1,32 +1,32 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <header>
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Mini TSE</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <h:form>
-                            <h:commandLink action="voters" class="nav-link">Votantes</h:commandLink>    
-                        </h:form>                
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Centros de votacion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Partidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Consultas</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-</html>
+<header xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Mini TSE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <h:form>
+                        <h:commandLink action="voters" class="nav-link">Votantes</h:commandLink>    
+                    </h:form>                
+                </li>
+                <li class="nav-item">
+                    <h:form>
+                        <h:commandLink action="votingplace_create" class="nav-link">Centros de votacion</h:commandLink>
+                    </h:form> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Partidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Consultas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="templates/main.xhtml">
+
+        <ui:define name="title">Crear centro de votacion</ui:define>
+
+        <ui:define name="content">
+            <h:form>
+                Departamento:<br/>
+                <h:selectOneMenu id="department" value="#{registerVotingPlaceBean.selectedDepartment}">
+                    <f:selectItem itemValue="#{null}" itemLabel="-- Departamento --" />
+                    <f:selectItems 
+                        value="#{registerVotingPlaceBean.allDepartments}"
+                        var="dept"
+                        itemLabel="#{dept[1]}"/>
+                    <f:ajax listener="#{registerVotingPlaceBean.changeDepartment}" render="municipality"/>
+                </h:selectOneMenu>
+                <br/>
+                <br/>
+
+                <h:selectOneMenu id="municipality" value="#{registerVotingPlaceBean.selectedMunicipality}">
+                    <f:selectItems 
+                        value="#{registerVotingPlaceBean.allMunicipalities}"
+                        var="dept"
+                        itemLabel="#{dept[1]}"/>
+                </h:selectOneMenu>
+                <br/>
+                <br/>
+                <h:commandButton value="Registrar" action="#{registerVotingPlaceBean.register}"/>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
