@@ -39,7 +39,7 @@ public class VotingTable implements Serializable {
     @JoinColumn(name = "id_centro", nullable = false)
     private VotingPlace votingPlace;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "votingTable")
     private List<Vote> votes;
 
     public Long getId() {

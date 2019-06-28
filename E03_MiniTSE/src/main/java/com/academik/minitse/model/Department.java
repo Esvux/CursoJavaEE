@@ -28,11 +28,7 @@ public class Department implements Serializable {
     @Column(name = "nombre", nullable = false)
     private String name;
     
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            orphanRemoval = true
-    )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "department")
     private List<Municipality> municipalities;
     
     public Long getId() {

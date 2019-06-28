@@ -1,12 +1,15 @@
 package com.academik.minitse.model;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -33,6 +36,10 @@ public class Municipality implements Serializable {
     @JoinColumn(name = "id_departamento", nullable = false)
     private Department department;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "municipality")
+    private List<VotingPlace> centers;
+
+    
     public Long getId() {
         return id;
     }
@@ -47,6 +54,22 @@ public class Municipality implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public List<VotingPlace> getCenters() {
+        return centers;
+    }
+
+    public void setCenters(List<VotingPlace> centers) {
+        this.centers = centers;
     }
     
 }
