@@ -36,7 +36,17 @@ public class Municipality implements Serializable {
     @JoinColumn(name = "id_departamento", nullable = false)
     private Department department;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "municipality")
+    @OneToMany(
+            cascade = CascadeType.ALL, 
+            orphanRemoval = true, 
+            mappedBy = "municipality"
+    )
+    //cascade > Determina como se manejaran las operaciones en cascada de las tablas
+    //orphanRemoval > Determina si las tuplas de las tablas "hijas" se eliminan
+    //cuando se elimina el registro "padre"
+    //mappedBy > Le dice a JPA como se llama el atributo que mapea la misma 
+    //relacion en la otra tabla para este caso la clase VotingPlace tendra un 
+    //atributo de tipo Municipality que mapea la otra mitad de la relacion
     private List<VotingPlace> centers;
 
     
