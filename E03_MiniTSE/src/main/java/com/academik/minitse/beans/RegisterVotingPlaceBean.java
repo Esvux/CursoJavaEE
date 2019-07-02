@@ -8,11 +8,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 
 /**
@@ -20,7 +17,7 @@ import javax.inject.Inject;
  * @author esvux
  */
 @ManagedBean(name = "registerVotingPlaceBean" )
-@SessionScoped
+@ViewScoped
 public class RegisterVotingPlaceBean implements Serializable {
     
     @Inject
@@ -29,8 +26,8 @@ public class RegisterVotingPlaceBean implements Serializable {
     @Inject
     MunicipalityDAO daoMun;
     
-    private Department selectedDepartment;
-    private Municipality selectedMunicipality;
+    private Long selectedDepartmentId;
+    private Long selectedMunicipalityId;
     private List<Department> allDepartments;
     private List<Municipality> allMunicipalities;
 
@@ -39,20 +36,20 @@ public class RegisterVotingPlaceBean implements Serializable {
         allDepartments = daoDept.findAll();
     }
     
-    public Department getSelectedDepartment() {
-        return selectedDepartment;
+    public Long getSelectedDepartmentId() {
+        return selectedDepartmentId;
     }
 
-    public void setSelectedDepartment(Department selectedDepartment) {
-        this.selectedDepartment = selectedDepartment;
+    public void setSelectedDepartmentId(Long selectedDepartmentId) {
+        this.selectedDepartmentId = selectedDepartmentId;
     }
 
-    public Municipality getSelectedMunicipality() {
-        return selectedMunicipality;
+    public Long getSelectedMunicipalityId() {
+        return selectedMunicipalityId;
     }
 
-    public void setSelectedMunicipality(Municipality selectedMunicipality) {
-        this.selectedMunicipality = selectedMunicipality;
+    public void setSelectedMunicipality(Long selectedMunicipalityId) {
+        this.selectedMunicipalityId = selectedMunicipalityId;
     }
     
     public List<Department> getAllDepartments() {
@@ -64,12 +61,13 @@ public class RegisterVotingPlaceBean implements Serializable {
     }
     
     public final void changeDepartment(final AjaxBehaviorEvent event) {
-        System.err.println("... cambiando...");
-        allMunicipalities = daoMun.findByDepartment(selectedDepartment);
+        Department dept = new Department();
+        dept.setId(selectedDepartmentId);
+        allMunicipalities = daoMun.findByDepartment(dept);
     }
     
     public String register() {
-        return "votingplace_create";
+        return "votingplacecreate";
     }
     
     

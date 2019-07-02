@@ -35,7 +35,7 @@ public class MunicipalityDAO {
     public List<Municipality> findAll() {
         //JPQL
         TypedQuery<Municipality> query = em.createQuery(
-                "SELECT m.id, m.name FROM Municipality m", 
+                "SELECT m FROM Municipality m", 
                 Municipality.class
         );
         List<Municipality> result = query.getResultList();

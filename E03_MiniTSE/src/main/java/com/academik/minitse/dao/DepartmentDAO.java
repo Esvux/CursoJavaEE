@@ -22,7 +22,7 @@ public class DepartmentDAO {
     public List<Department> findAll() {
         //JPQL
         TypedQuery<Department> query = em.createQuery(
-                "SELECT d.id, d.name FROM Department d", 
+                "SELECT d FROM Department d", 
                 Department.class
         );
         List<Department> result = query.getResultList();
