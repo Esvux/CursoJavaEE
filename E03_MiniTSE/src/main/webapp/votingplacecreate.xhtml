@@ -11,25 +11,28 @@
 
         <ui:define name="content">
             <h:form>
-                Departamento:<br/>
-                <h:selectOneMenu id="department" value="#{registerVotingPlaceBean.selectedDepartmentId}">
-                    <f:selectItem itemValue="#{null}" itemLabel="-- Departamento --" />
-                    <f:selectItems 
-                        value="#{registerVotingPlaceBean.allDepartments}"
-                        var="dept" itemLabel="#{dept.name}" itemValue="#{dept.id}"/>
-                    <f:ajax listener="#{registerVotingPlaceBean.changeDepartment}" render="municipality"/>
-                </h:selectOneMenu>
-                <br/>
-                <br/>
 
-                <h:selectOneMenu id="municipality" value="#{registerVotingPlaceBean.selectedMunicipalityId}">
-                    <f:selectItems 
-                        value="#{registerVotingPlaceBean.allMunicipalities}"
-                        var="muni" itemLabel="#{muni.name}" itemValue="#{muni.id}"/>
-                </h:selectOneMenu>
-                <br/>
-                <br/>
-                <h:commandButton value="Registrar" action="#{registerVotingPlaceBean.register}"/>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Departamento"/>
+                    <h:selectOneMenu id="department" value="#{registerVotingPlaceBean.selectedDepartmentId}">
+                        <f:selectItem itemValue="#{null}" itemLabel="- Seleccione departamento -" noSelectionOption="true"/>
+                        <f:selectItems 
+                            value="#{registerVotingPlaceBean.allDepartments}"
+                            var="dept" itemLabel="#{dept.name}" itemValue="#{dept.id}"/>
+                        <f:ajax listener="#{registerVotingPlaceBean.changeDepartment}" render="municipality"/>
+                    </h:selectOneMenu>                        
+
+                    <h:outputText value="Municipio"/>
+                    <h:selectOneMenu id="municipality" value="#{registerVotingPlaceBean.selectedMunicipalityId}">
+                        <f:selectItem itemValue="#{null}" itemLabel="- Seleccione municipio -" noSelectionOption="true"/>
+                        <f:selectItems 
+                            value="#{registerVotingPlaceBean.allMunicipalities}"
+                            var="muni" itemLabel="#{muni.name}" itemValue="#{muni.id}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+
+
+                <h:commandButton value="Crear centro" action="#{registerVotingPlaceBean.register}"/>
             </h:form>
         </ui:define>
 

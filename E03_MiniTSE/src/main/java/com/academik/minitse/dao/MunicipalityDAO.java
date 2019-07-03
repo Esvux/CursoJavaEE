@@ -23,7 +23,7 @@ public class MunicipalityDAO {
     public List<Municipality> findByDepartment(Department dept) {
         //JPQL
         TypedQuery<Municipality> query = em.createQuery(
-                "SELECT m.id, m.name FROM Municipality m WHERE m.department = :depto", 
+                "SELECT m FROM Municipality m WHERE m.department = :depto", 
                 Municipality.class
         );
         query.setParameter("depto", dept);

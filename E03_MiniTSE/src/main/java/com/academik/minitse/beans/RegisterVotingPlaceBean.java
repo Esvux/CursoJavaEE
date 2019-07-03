@@ -5,6 +5,7 @@ import com.academik.minitse.dao.MunicipalityDAO;
 import com.academik.minitse.model.Department;
 import com.academik.minitse.model.Municipality;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -61,6 +62,11 @@ public class RegisterVotingPlaceBean implements Serializable {
     }
     
     public final void changeDepartment(final AjaxBehaviorEvent event) {
+        if(selectedDepartmentId == null) {
+            selectedMunicipalityId = null;
+            allMunicipalities = Collections.EMPTY_LIST;
+            return;
+        }
         Department dept = new Department();
         dept.setId(selectedDepartmentId);
         allMunicipalities = daoMun.findByDepartment(dept);
