@@ -12,9 +12,10 @@
         <ui:define name="content">
             <h:form>
 
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" class="table table-borderless">
+                    <!-- Etiqueta y comboBox de departamentos -->
                     <h:outputText value="Departamento"/>
-                    <h:selectOneMenu id="department" value="#{registerVotingPlaceBean.selectedDepartmentId}">
+                    <h:selectOneMenu id="department" value="#{registerVotingPlaceBean.selectedDepartmentId}" class="w-100">
                         <f:selectItem itemValue="#{null}" itemLabel="- Seleccione departamento -" noSelectionOption="true"/>
                         <f:selectItems 
                             value="#{registerVotingPlaceBean.allDepartments}"
@@ -22,15 +23,27 @@
                         <f:ajax listener="#{registerVotingPlaceBean.changeDepartment}" render="municipality"/>
                     </h:selectOneMenu>                        
 
+                    <!-- Etiqueta y comboBox de municipios -->
                     <h:outputText value="Municipio"/>
-                    <h:selectOneMenu id="municipality" value="#{registerVotingPlaceBean.selectedMunicipalityId}">
+                    <h:selectOneMenu id="municipality" value="#{registerVotingPlaceBean.selectedMunicipalityId}" class="w-100">
                         <f:selectItem itemValue="#{null}" itemLabel="- Seleccione municipio -" noSelectionOption="true"/>
                         <f:selectItems 
                             value="#{registerVotingPlaceBean.allMunicipalities}"
                             var="muni" itemLabel="#{muni.name}" itemValue="#{muni.id}"/>
                     </h:selectOneMenu>
-                </h:panelGrid>
+                    
+                    <!-- Nombre del centro de votación -->
+                    <h:outputText value="Nombre"/>
+                    <h:inputText value="#{registerVotingPlaceBean.tempName}" class="w-100"/>
 
+                    <!-- Dirección del centro de votación -->
+                    <h:outputText value="Dirección"/>
+                    <h:inputText value="#{registerVotingPlaceBean.tempAddress}" class="w-100"/>
+
+                    <!-- Dirección extra del centro de votación -->
+                    <h:outputText value="Complemento de dirección"/>
+                    <h:inputText value="#{registerVotingPlaceBean.tempExtraAddress}" class="w-100"/>
+                </h:panelGrid>
 
                 <h:commandButton value="Crear centro" action="#{registerVotingPlaceBean.register}"/>
             </h:form>

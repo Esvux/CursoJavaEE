@@ -49,6 +49,12 @@ public class Municipality implements Serializable {
     //atributo de tipo Municipality que mapea la otra mitad de la relacion
     private List<VotingPlace> centers;
 
+    public Municipality() {
+    }
+
+    public Municipality(Long id) {
+        this.id = id;
+    }   
     
     public Long getId() {
         return id;

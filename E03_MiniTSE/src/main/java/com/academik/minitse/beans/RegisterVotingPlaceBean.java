@@ -2,8 +2,10 @@ package com.academik.minitse.beans;
 
 import com.academik.minitse.dao.DepartmentDAO;
 import com.academik.minitse.dao.MunicipalityDAO;
+import com.academik.minitse.dao.VotingPlaceDAO;
 import com.academik.minitse.model.Department;
 import com.academik.minitse.model.Municipality;
+import com.academik.minitse.model.VotingPlace;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
@@ -27,8 +29,14 @@ public class RegisterVotingPlaceBean implements Serializable {
     @Inject
     MunicipalityDAO daoMun;
     
+    @Inject
+    VotingPlaceDAO daoVotingPlace;
+    
     private Long selectedDepartmentId;
     private Long selectedMunicipalityId;
+    private String tempName;
+    private String tempAddress;
+    private String tempExtraAddress;
     private List<Department> allDepartments;
     private List<Municipality> allMunicipalities;
 
@@ -49,8 +57,32 @@ public class RegisterVotingPlaceBean implements Serializable {
         return selectedMunicipalityId;
     }
 
-    public void setSelectedMunicipality(Long selectedMunicipalityId) {
+    public void setSelectedMunicipalityId(Long selectedMunicipalityId) {
         this.selectedMunicipalityId = selectedMunicipalityId;
+    }
+    
+    public String getTempName() {
+        return tempName;
+    }
+
+    public void setTempName(String tempName) {
+        this.tempName = tempName;
+    }
+
+    public String getTempAddress() {
+        return tempAddress;
+    }
+
+    public void setTempAddress(String tempAddress) {
+        this.tempAddress = tempAddress;
+    }
+
+    public String getTempExtraAddress() {
+        return tempExtraAddress;
+    }
+
+    public void setTempExtraAddress(String tempExtraAddress) {
+        this.tempExtraAddress = tempExtraAddress;
     }
     
     public List<Department> getAllDepartments() {
@@ -73,8 +105,14 @@ public class RegisterVotingPlaceBean implements Serializable {
     }
     
     public String register() {
+        VotingPlace place = new VotingPlace();
+        place.setName(tempName);
+        place.setAddress(tempAddress);
+        place.setExtraAddress(tempExtraAddress);
+        Municipality m = new Municipality(selectedMunicipalityId);
+        place.setMunicipality(m);
+        daoVotingPlace.create(place);
         return "votingplacecreate";
     }
-    
-    
+   
 }
