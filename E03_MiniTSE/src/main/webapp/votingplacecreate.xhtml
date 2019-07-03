@@ -11,7 +11,6 @@
 
         <ui:define name="content">
             <h:form>
-
                 <h:panelGrid columns="2" class="table table-borderless">
                     <!-- Etiqueta y comboBox de departamentos -->
                     <h:outputText value="Departamento"/>
@@ -19,7 +18,9 @@
                         <f:selectItem itemValue="#{null}" itemLabel="- Seleccione departamento -" noSelectionOption="true"/>
                         <f:selectItems 
                             value="#{registerVotingPlaceBean.allDepartments}"
-                            var="dept" itemLabel="#{dept.name}" itemValue="#{dept.id}"/>
+                            var="dept"
+                            itemLabel="#{dept.name}"
+                            itemValue="#{dept.id}"/>
                         <f:ajax listener="#{registerVotingPlaceBean.changeDepartment}" render="municipality"/>
                     </h:selectOneMenu>                        
 
@@ -29,9 +30,11 @@
                         <f:selectItem itemValue="#{null}" itemLabel="- Seleccione municipio -" noSelectionOption="true"/>
                         <f:selectItems 
                             value="#{registerVotingPlaceBean.allMunicipalities}"
-                            var="muni" itemLabel="#{muni.name}" itemValue="#{muni.id}"/>
+                            var="muni"
+                            itemLabel="#{muni.name}"
+                            itemValue="#{muni.id}"/>
                     </h:selectOneMenu>
-                    
+
                     <!-- Nombre del centro de votación -->
                     <h:outputText value="Nombre"/>
                     <h:inputText value="#{registerVotingPlaceBean.tempName}" class="w-100"/>
@@ -43,9 +46,16 @@
                     <!-- Dirección extra del centro de votación -->
                     <h:outputText value="Complemento de dirección"/>
                     <h:inputText value="#{registerVotingPlaceBean.tempExtraAddress}" class="w-100"/>
-                </h:panelGrid>
 
-                <h:commandButton value="Crear centro" action="#{registerVotingPlaceBean.register}"/>
+                </h:panelGrid>
+                
+                <!-- Botón para creación -->
+                <h:commandButton
+                    value="Crear centro de votación"
+                    class="btn btn-primary"
+                    action="#{registerVotingPlaceBean.register}">
+                    <f:ajax execute="@form"/>
+                </h:commandButton>
             </h:form>
         </ui:define>
 
