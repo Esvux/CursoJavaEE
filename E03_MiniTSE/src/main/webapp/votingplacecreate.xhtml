@@ -47,8 +47,34 @@
                     <h:outputText value="Complemento de dirección"/>
                     <h:inputText value="#{registerVotingPlaceBean.tempExtraAddress}" class="w-100"/>
 
+                    <h:outputText value="Numero de mesa"/>
+                    <h:inputText id="numNewTable" value="#{registerVotingPlaceBean.tempNumTable}" class="w-100"/>
                 </h:panelGrid>
+
+                <h:commandButton
+                    value="Agregar mesa"
+                    class="btn btn-primary"
+                    action="#{registerVotingPlaceBean.addTable}">
+                    <f:ajax execute="@form" render="tableOfTables numNewTable"/>
+                </h:commandButton>
+                <br/>
+                <br/>
                 
+                <h:dataTable id="tableOfTables" value="#{registerVotingPlaceBean.tempTables}" var="table" class="table">
+                    <h:column>
+                        <f:facet name="header">Numero de mesa</f:facet>
+                        <h:outputText value="#{table.tableNum}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Votos en blanco</f:facet>
+                        <h:outputText value="#{table.blankQuantity}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Votos nulos</f:facet>
+                        <h:outputText value="#{table.nullQuantity}"/>
+                    </h:column>
+                </h:dataTable>
+
                 <!-- Botón para creación -->
                 <h:commandButton
                     value="Crear centro de votación"
@@ -56,6 +82,8 @@
                     action="#{registerVotingPlaceBean.register}">
                     <f:ajax execute="@form"/>
                 </h:commandButton>
+                <br/>
+                <br/>
             </h:form>
         </ui:define>
 

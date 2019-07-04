@@ -6,7 +6,9 @@ import com.academik.minitse.dao.VotingPlaceDAO;
 import com.academik.minitse.model.Department;
 import com.academik.minitse.model.Municipality;
 import com.academik.minitse.model.VotingPlace;
+import com.academik.minitse.model.VotingTable;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -37,6 +39,9 @@ public class RegisterVotingPlaceBean implements Serializable {
     private String tempName;
     private String tempAddress;
     private String tempExtraAddress;
+    private Integer tempNumTable;
+    private List<VotingTable> tempTables;
+    
     private List<Department> allDepartments;
     private List<Municipality> allMunicipalities;
 
@@ -84,6 +89,23 @@ public class RegisterVotingPlaceBean implements Serializable {
     public void setTempExtraAddress(String tempExtraAddress) {
         this.tempExtraAddress = tempExtraAddress;
     }
+
+
+    public Integer getTempNumTable() {
+        return tempNumTable;
+    }
+
+    public void setTempNumTable(Integer tempNumTable) {
+        this.tempNumTable = tempNumTable;
+    }
+
+    public List<VotingTable> getTempTables() {
+        return tempTables;
+    }
+
+    public void setTempTables(List<VotingTable> tempTables) {
+        this.tempTables = tempTables;
+    }   
     
     public List<Department> getAllDepartments() {
         return allDepartments;
@@ -111,8 +133,23 @@ public class RegisterVotingPlaceBean implements Serializable {
         place.setExtraAddress(tempExtraAddress);
         Municipality m = new Municipality(selectedMunicipalityId);
         place.setMunicipality(m);
+        place.setTables(tempTables);
+        tempTables.forEach(table -> table.setVotingPlace(place));
         daoVotingPlace.create(place);
         return "votingplacecreate";
     }
-   
+    
+    public void addTable() {
+        if(tempNumTable == null) {
+            return;
+        }
+        VotingTable table = new VotingTable();
+        table.setTableNum(tempNumTable);
+        if(tempTables == null) {
+            tempTables = new ArrayList<>();
+        }
+        tempTables.add(table);
+        this.tempNumTable = null;
+    }
+
 }
