@@ -14,8 +14,13 @@
                 <h:panelGrid columns="2" class="table table-borderless">
                     <!-- Etiqueta y comboBox de departamentos -->
                     <h:outputText value="Departamento"/>
-                    <h:selectOneMenu id="department" value="#{registerVotingPlaceBean.selectedDepartmentId}" class="w-100">
+                    <h:selectOneMenu 
+                        id="department" 
+                        value="#{registerVotingPlaceBean.selectedDepartmentId}" 
+                        class="w-100">
+                        <!-- Opcion seleccionada por defecto -->
                         <f:selectItem itemValue="#{null}" itemLabel="- Seleccione departamento -" noSelectionOption="true"/>
+                        <!-- Items con los que se llena el combobox -->
                         <f:selectItems 
                             value="#{registerVotingPlaceBean.allDepartments}"
                             var="dept"
@@ -54,7 +59,7 @@
                     value="Crear centro de votación"
                     class="btn btn-primary"
                     action="#{registerVotingPlaceBean.register}">
-                    <f:ajax execute="@form"/>
+                    <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:form>
         </ui:define>

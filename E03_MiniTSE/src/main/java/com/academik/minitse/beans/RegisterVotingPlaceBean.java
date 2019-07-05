@@ -94,11 +94,13 @@ public class RegisterVotingPlaceBean implements Serializable {
     }
     
     public final void changeDepartment(final AjaxBehaviorEvent event) {
+        //Si la opcion seleccionada en Departamento es null, limpiar el combobox de Municipio
         if(selectedDepartmentId == null) {
             selectedMunicipalityId = null;
             allMunicipalities = Collections.EMPTY_LIST;
             return;
         }
+        //Obtengo los municipios por el departamento seleccionado
         Department dept = new Department();
         dept.setId(selectedDepartmentId);
         allMunicipalities = daoMun.findByDepartment(dept);
@@ -112,7 +114,18 @@ public class RegisterVotingPlaceBean implements Serializable {
         Municipality m = new Municipality(selectedMunicipalityId);
         place.setMunicipality(m);
         daoVotingPlace.create(place);
+        clearForm();
         return "votingplacecreate";
+    }
+    
+    private void clearForm() {
+        tempName = null;
+        tempAddress = null;
+        tempExtraAddress = null;
+        selectedDepartmentId = null;
+        selectedMunicipalityId = null;
+        allDepartments = daoDept.findAll();
+        allMunicipalities = Collections.EMPTY_LIST;
     }
    
 }
