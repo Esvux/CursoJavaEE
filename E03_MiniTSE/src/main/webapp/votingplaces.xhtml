@@ -21,12 +21,20 @@
                         <f:facet name="header">Direccion</f:facet>
                         <h:outputText value="#{center.address}"/>
                     </h:column>
+                    <h:column>
+                        <f:facet name="header">Acciones</f:facet>
+                        <h:commandLink class="btn btn-primary" value="Editar">
+                        </h:commandLink>
+                        <span> </span>
+                        <h:commandLink class="btn btn-danger" value="Eliminar">
+                        </h:commandLink>
+                    </h:column>
                 </h:dataTable>
 
                 <!-- Botón para ir a creación -->
                 <h:commandLink
                     value="Crear nuevo centro de votación"
-                    class="btn btn-primary"
+                    class="btn btn-success"
                     action="votingplacecreate">
                 </h:commandLink>
                 <br/>

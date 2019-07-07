@@ -11,6 +11,14 @@
 
         <ui:define name="content">
             <h:form>
+                <div
+                    id="message"
+                    class="alert alert-success alert-dismissible show fade">
+                    <strong>Exito!</strong> Centro de votación creado correctamente
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <h:panelGrid columns="2" class="table table-borderless">
                     <!-- Etiqueta y comboBox de departamentos -->
                     <h:outputText value="Departamento"/>
@@ -53,13 +61,13 @@
                     <h:inputText value="#{registerVotingPlaceBean.tempExtraAddress}" class="w-100"/>
 
                 </h:panelGrid>
-                
+
                 <!-- Botón para creación -->
                 <h:commandButton
                     value="Crear centro de votación"
                     class="btn btn-primary"
                     action="#{registerVotingPlaceBean.register}">
-                    <f:ajax execute="@form" render="@form"/>
+                    <f:ajax execute="@form" render="@form" onevent="showSuccessMessage()"/>
                 </h:commandButton>
             </h:form>
         </ui:define>
