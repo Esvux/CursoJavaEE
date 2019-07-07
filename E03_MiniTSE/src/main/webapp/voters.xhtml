@@ -13,15 +13,15 @@
                 <h:dataTable class="table" value="#{listVotersBean.voters}" var="v">
                     <h:column>
                         <f:facet name="header">DPI</f:facet>
-                            #{v[0]}
+                            #{v.dpi}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Nombres</f:facet>
-                            #{v[1]}
+                            #{v.firstName}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Apellidos</f:facet>
-                            #{v[2]}
+                            #{v.lastName}
                     </h:column>
                 </h:dataTable>
                 <h:commandLink value="Registrar nuevo votante" action="register"/>
