@@ -31,4 +31,9 @@ public class VotingPlaceBean implements Serializable {
         return allCenters;
     }
     
+    public void delete(Long id) {
+        daoVotingPlace.delete(id);
+        allCenters = daoVotingPlace.findAll();
+    }
+
 }

@@ -26,7 +26,11 @@
                         <h:commandLink class="btn btn-primary" value="Editar">
                         </h:commandLink>
                         <span> </span>
-                        <h:commandLink class="btn btn-danger" value="Eliminar">
+                        <h:commandLink
+                            class="btn btn-danger"
+                            value="Eliminar"
+                            onclick="if(! confirm('¿Desea eliminar este centro de votación?')) return false;">
+                            <f:ajax execute="@this" render="@form" listener="#{votingPlaceBean.delete(center.id)}"/>
                         </h:commandLink>
                     </h:column>
                 </h:dataTable>

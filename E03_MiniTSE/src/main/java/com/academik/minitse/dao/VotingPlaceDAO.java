@@ -28,4 +28,10 @@ public class VotingPlaceDAO {
         return query.getResultList();
     }
     
+    @Transactional
+    public void delete(Long id) {
+        VotingPlace placeToDelete = em.find(VotingPlace.class, id);
+        em.remove(placeToDelete);
+    }
+
 }
