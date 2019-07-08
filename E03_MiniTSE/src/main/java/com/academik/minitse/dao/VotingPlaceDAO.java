@@ -28,6 +28,16 @@ public class VotingPlaceDAO {
         return query.getResultList();
     }
     
+    public VotingPlace findById(Long id) {
+        VotingPlace place = em.find(VotingPlace.class, id);
+        return place;
+    }
+    
+    @Transactional
+    public void update(VotingPlace place) {
+        em.merge(place);
+    }
+
     @Transactional
     public void delete(Long id) {
         VotingPlace placeToDelete = em.find(VotingPlace.class, id);

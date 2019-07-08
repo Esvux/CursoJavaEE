@@ -12,7 +12,11 @@
         <ui:define name="content">
             <h:form>
                 
-                <h:dataTable id="centers" value="#{votingPlaceBean.allCenters}" var="center" class="table">
+                <h:dataTable
+                    id="centers"
+                    value="#{votingPlaceListBean.allCenters}"
+                    var="center"
+                    class="table">
                     <h:column>
                         <f:facet name="header">Nombre</f:facet>
                         <h:outputText value="#{center.name}"/>
@@ -23,14 +27,17 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Acciones</f:facet>
-                        <h:commandLink class="btn btn-primary" value="Editar">
+                        <h:commandLink 
+                            class="btn btn-primary" 
+                            value="Editar"
+                            action="#{nav.goEditVotingPlace(center.id)}">
                         </h:commandLink>
                         <span> </span>
                         <h:commandLink
                             class="btn btn-danger"
                             value="Eliminar"
                             onclick="if(! confirm('¿Desea eliminar este centro de votación?')) return false;">
-                            <f:ajax execute="@this" render="@form" listener="#{votingPlaceBean.delete(center.id)}"/>
+                            <f:ajax execute="@this" render="@form" listener="#{votingPlaceListBean.delete(center.id)}"/>
                         </h:commandLink>
                     </h:column>
                 </h:dataTable>

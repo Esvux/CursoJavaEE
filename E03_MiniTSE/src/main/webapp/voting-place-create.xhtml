@@ -14,7 +14,7 @@
                 <div
                     id="message"
                     class="alert alert-success alert-dismissible show fade">
-                    <strong>Exito!</strong> Centro de votación creado correctamente
+                    <strong>Éxito!</strong> Centro de votación creado correctamente
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -24,25 +24,25 @@
                     <h:outputText value="Departamento"/>
                     <h:selectOneMenu 
                         id="department" 
-                        value="#{registerVotingPlaceBean.selectedDepartmentId}" 
+                        value="#{votingPlaceCreateBean.selectedDepartmentId}" 
                         class="w-100">
                         <!-- Opcion seleccionada por defecto -->
                         <f:selectItem itemValue="#{null}" itemLabel="- Seleccione departamento -" noSelectionOption="true"/>
                         <!-- Items con los que se llena el combobox -->
                         <f:selectItems 
-                            value="#{registerVotingPlaceBean.allDepartments}"
+                            value="#{votingPlaceCreateBean.allDepartments}"
                             var="dept"
                             itemLabel="#{dept.name}"
                             itemValue="#{dept.id}"/>
-                        <f:ajax listener="#{registerVotingPlaceBean.changeDepartment}" render="municipality"/>
+                        <f:ajax listener="#{votingPlaceCreateBean.changeDepartment}" render="municipality"/>
                     </h:selectOneMenu>                        
 
                     <!-- Etiqueta y comboBox de municipios -->
                     <h:outputText value="Municipio"/>
-                    <h:selectOneMenu id="municipality" value="#{registerVotingPlaceBean.selectedMunicipalityId}" class="w-100">
+                    <h:selectOneMenu id="municipality" value="#{votingPlaceCreateBean.selectedMunicipalityId}" class="w-100">
                         <f:selectItem itemValue="#{null}" itemLabel="- Seleccione municipio -" noSelectionOption="true"/>
                         <f:selectItems 
-                            value="#{registerVotingPlaceBean.allMunicipalities}"
+                            value="#{votingPlaceCreateBean.allMunicipalities}"
                             var="muni"
                             itemLabel="#{muni.name}"
                             itemValue="#{muni.id}"/>
@@ -50,15 +50,15 @@
 
                     <!-- Nombre del centro de votación -->
                     <h:outputText value="Nombre"/>
-                    <h:inputText value="#{registerVotingPlaceBean.tempName}" class="w-100"/>
+                    <h:inputText value="#{votingPlaceCreateBean.tempName}" class="w-100"/>
 
                     <!-- Dirección del centro de votación -->
                     <h:outputText value="Dirección"/>
-                    <h:inputText value="#{registerVotingPlaceBean.tempAddress}" class="w-100"/>
+                    <h:inputText value="#{votingPlaceCreateBean.tempAddress}" class="w-100"/>
 
                     <!-- Dirección extra del centro de votación -->
                     <h:outputText value="Complemento de dirección"/>
-                    <h:inputText value="#{registerVotingPlaceBean.tempExtraAddress}" class="w-100"/>
+                    <h:inputText value="#{votingPlaceCreateBean.tempExtraAddress}" class="w-100"/>
 
                 </h:panelGrid>
 
@@ -66,7 +66,7 @@
                 <h:commandButton
                     value="Crear centro de votación"
                     class="btn btn-primary"
-                    action="#{registerVotingPlaceBean.register}">
+                    action="#{votingPlaceCreateBean.register}">
                     <f:ajax execute="@form" render="@form" onevent="showSuccessMessage()"/>
                 </h:commandButton>
             </h:form>

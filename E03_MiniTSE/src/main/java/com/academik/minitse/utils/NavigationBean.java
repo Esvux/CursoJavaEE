@@ -16,11 +16,15 @@ public class NavigationBean {
     }
     
     public String goVotingPlaces() {
-        return immediateRedirect("votingplaces");
+        return immediateRedirect("voting-places");
     }
     
     public String goCreateVotingPlace() {
-        return immediateRedirect("votingplacecreate");
+        return immediateRedirect("voting-place-create");
+    }
+
+    public String goEditVotingPlace(Long id) {
+        return immediateRedirect("voting-place-edit") + "&selected_id=" + id;
     }
 
 }

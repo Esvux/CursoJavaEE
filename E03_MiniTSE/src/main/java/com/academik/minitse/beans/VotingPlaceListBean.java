@@ -13,9 +13,9 @@ import javax.inject.Inject;
  *
  * @author esvux
  */
-@ManagedBean(name = "votingPlaceBean")
+@ManagedBean(name = "votingPlaceListBean")
 @ViewScoped
-public class VotingPlaceBean implements Serializable {
+public class VotingPlaceListBean implements Serializable {
     
     @Inject
     VotingPlaceDAO daoVotingPlace;
