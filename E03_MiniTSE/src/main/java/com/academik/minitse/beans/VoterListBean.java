@@ -11,9 +11,9 @@ import javax.inject.Inject;
  *
  * @author esvux
  */
-@ManagedBean(name = "listVotersBean")
+@ManagedBean(name = "voterListBean")
 @RequestScoped
-public class ListVotersBean {
+public class VoterListBean {
     
     @Inject
     VoterDAO dao;

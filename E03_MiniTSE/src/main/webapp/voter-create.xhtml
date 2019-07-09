@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="templates/main.xhtml">
+
+        <ui:define name="title">Registro de votantes</ui:define>
+
+        <ui:define name="content">
+            <h:form>
+                <h:panelGrid columns="2" class="table table-borderless">
+                    <!-- DPI del votante -->
+                    <h:outputText value="DPI:"/>
+                    <h:inputText value="#{voterCreateBean.tempDpi}" class="w-100"/>
+                
+                    <!-- Nombres del votante -->
+                    <h:outputText value="Nombres:"/>
+                    <h:inputText value="#{voterCreateBean.tempFirstName}" class="w-100"/>
+                    
+                    <!-- Apellidos del votante -->
+                    <h:outputText value="Apellidos:"/>
+                    <h:inputText value="#{voterCreateBean.tempLastName}" class="w-100"/>
+                    
+                    <!-- Género del votante -->
+                    <h:outputText value="Género:"/>
+                    <h:selectOneMenu value="#{voterCreateBean.tempGender}" class="custom-select">
+                        <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                        <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                    </h:selectOneMenu>
+
+                    <!-- Fecha de nacimiento del votante -->
+                    <h:outputText value="Fecha de nacimiento"/>
+                    <h:inputText value="#{voterCreateBean.tempBirthday}" class="w-100">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    
+                    <!-- Dirección del votante -->
+                    <h:outputText value="Dirección"/>
+                    <h:inputText value="#{voterCreateBean.tempAddress}" class="w-100"/>
+
+                    <!-- Dirección extra del votante -->
+                    <h:outputText value="Complemento de dirección"/>
+                    <h:inputText value="#{voterCreateBean.tempExtraAddress}" class="w-100"/>
+                </h:panelGrid>
+                
+                <h:commandButton 
+                    value="Registrar" 
+                    class="btn btn-primary"
+                    action="#{voterCreateBean.register}"/>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>

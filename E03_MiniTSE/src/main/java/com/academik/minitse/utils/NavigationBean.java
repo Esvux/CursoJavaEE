@@ -27,4 +27,12 @@ public class NavigationBean {
         return immediateRedirect("voting-place-edit") + "&selected_id=" + id;
     }
 
+    public String goVoters() {
+        return immediateRedirect("voters");
+    }
+
+    public String goCreateVoters() {
+        return immediateRedirect("voter-create");
+    }
+    
 }

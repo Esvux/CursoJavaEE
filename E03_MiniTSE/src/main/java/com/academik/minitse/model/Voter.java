@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -28,6 +30,7 @@ public class Voter implements Serializable {
     private String lastName;
     
     @Column(name = "fecha_nacimiento")
+    @Temporal(TemporalType.DATE)
     private Date birthday;
     
     @Column(name = "genero", length = 1)
