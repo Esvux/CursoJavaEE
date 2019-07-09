@@ -106,7 +106,7 @@ public class VotingPlaceCreateBean implements Serializable {
         allMunicipalities = daoMun.findByDepartment(dept);
     }
 
-    public String register() {
+    public void register() {
         VotingPlace place = new VotingPlace();
         place.setName(tempName);
         place.setAddress(tempAddress);
@@ -115,7 +115,6 @@ public class VotingPlaceCreateBean implements Serializable {
         place.setMunicipality(m);
         daoVotingPlace.create(place);
         clearForm();
-        return "votingplacecreate";
     }
 
     private void clearForm() {

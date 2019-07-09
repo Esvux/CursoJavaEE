@@ -34,8 +34,9 @@ public class VotingPlaceDAO {
     }
     
     @Transactional
-    public void update(VotingPlace place) {
-        em.merge(place);
+    public VotingPlace update(VotingPlace place) {
+        VotingPlace updated = em.merge(place);
+        return updated;
     }
 
     @Transactional

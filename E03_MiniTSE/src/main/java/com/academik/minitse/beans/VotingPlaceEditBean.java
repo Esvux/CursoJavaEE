@@ -1,23 +1,13 @@
 package com.academik.minitse.beans;
 
-import com.academik.minitse.dao.DepartmentDAO;
-import com.academik.minitse.dao.MunicipalityDAO;
 import com.academik.minitse.dao.VotingPlaceDAO;
-import com.academik.minitse.model.Department;
-import com.academik.minitse.model.Municipality;
 import com.academik.minitse.model.VotingPlace;
 import com.academik.minitse.utils.NabJSFUtil;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 
 /**
@@ -82,7 +72,7 @@ public class VotingPlaceEditBean implements Serializable {
         place.setName(tempName);
         place.setAddress(tempAddress);
         place.setExtraAddress(tempExtraAddress);
-        daoVotingPlace.update(place);
+        place = daoVotingPlace.update(place);
     }
 
 }
