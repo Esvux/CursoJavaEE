@@ -10,10 +10,6 @@ import javax.faces.context.FacesContext;
 public class NabJSFUtil {
     
     public static String getParameter(String name) {
-        System.err.println(FacesContext
-                .getCurrentInstance()
-                .getExternalContext()
-                .getRequestParameterMap());
         return FacesContext
                 .getCurrentInstance()
                 .getExternalContext()
