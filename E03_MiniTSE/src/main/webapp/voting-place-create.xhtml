@@ -60,6 +60,13 @@
                     <h:outputText value="Complemento de dirección"/>
                     <h:inputText value="#{votingPlaceCreateBean.tempExtraAddress}" class="w-100"/>
 
+                    <!-- Numero inicial de mesas -->
+                    <h:outputText value="Mesa inicial"/>
+                    <h:inputText value="#{votingPlaceCreateBean.tempInitTable}" class="w-50"/>
+
+                    <!-- Numero final de mesas -->
+                    <h:outputText value="Mesa final"/>
+                    <h:inputText value="#{votingPlaceCreateBean.tempEndTable}" class="w-50"/>
                 </h:panelGrid>
 
                 <!-- Botón para creación -->

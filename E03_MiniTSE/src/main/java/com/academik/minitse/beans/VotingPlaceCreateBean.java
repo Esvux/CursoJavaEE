@@ -6,7 +6,9 @@ import com.academik.minitse.dao.VotingPlaceDAO;
 import com.academik.minitse.model.Department;
 import com.academik.minitse.model.Municipality;
 import com.academik.minitse.model.VotingPlace;
+import com.academik.minitse.model.VotingTable;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -37,6 +39,8 @@ public class VotingPlaceCreateBean implements Serializable {
     private String tempName;
     private String tempAddress;
     private String tempExtraAddress;
+    private Integer tempInitTable;
+    private Integer tempEndTable;
     private List<Department> allDepartments;
     private List<Municipality> allMunicipalities;
 
@@ -85,6 +89,22 @@ public class VotingPlaceCreateBean implements Serializable {
         this.tempExtraAddress = tempExtraAddress;
     }
 
+    public Integer getTempInitTable() {
+        return tempInitTable;
+    }
+
+    public void setTempInitTable(Integer tempInitTable) {
+        this.tempInitTable = tempInitTable;
+    }
+
+    public Integer getTempEndTable() {
+        return tempEndTable;
+    }
+
+    public void setTempEndTable(Integer tempEndTable) {
+        this.tempEndTable = tempEndTable;
+    }
+
     public List<Department> getAllDepartments() {
         return allDepartments;
     }
@@ -113,6 +133,14 @@ public class VotingPlaceCreateBean implements Serializable {
         place.setExtraAddress(tempExtraAddress);
         Municipality m = new Municipality(selectedMunicipalityId);
         place.setMunicipality(m);
+        List<VotingTable> tables = new ArrayList<>();
+        for(int i=tempInitTable; i<=tempEndTable; i++) {
+            VotingTable t = new VotingTable();
+            t.setTableNum(i);
+            t.setVotingPlace(place);
+            tables.add(t);
+        }
+        place.setTables(tables);
         daoVotingPlace.create(place);
         clearForm();
     }
