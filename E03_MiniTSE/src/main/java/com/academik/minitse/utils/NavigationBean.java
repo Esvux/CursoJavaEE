@@ -35,4 +35,8 @@ public class NavigationBean {
         return immediateRedirect("voter-create");
     }
     
+    public String goVoteSubmit() {
+        return immediateRedirect("vote-submit");
+    }
+    
 }

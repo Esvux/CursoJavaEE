@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="templates/main.xhtml">
+        
+        <ui:define name="title">Bienvenidos a Mini TSE</ui:define>
+        
+        <ui:define name="content">
+            <h:form>
+                <h:outputLabel value="DPI:"/>
+                <br/>
+                <h:inputText/>
+                <br/>
+                <br/>
+                <h:selectOneRadio value="#{voteSubmitBean.selectedVoteOption}" layout="pageDirection">
+                    <f:selectItem itemValue="-2" itemLabel="Voto NULO"/>
+                    <f:selectItem itemValue="-1" itemLabel="Voto EN BLANCO"/>
+                    <f:selectItems 
+                        value="#{voteSubmitBean.parties}"
+                        var="aPP"
+                        itemValue="#{aPP.id}"
+                        itemLabel="#{aPP.candidate}"
+                        />
+                </h:selectOneRadio>
+                <h:commandButton 
+                    value="Votar" 
+                    class="btn btn-primary" 
+                    action="#{voteSubmitBean.vote()}"/>
+            </h:form>
+        </ui:define>
+        
+    </ui:composition>
+
+</html>

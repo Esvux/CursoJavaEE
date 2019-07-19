@@ -23,7 +23,9 @@
                     <a class="nav-link" href="#">Partidos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Emitir voto</a>
+                    <h:form>
+                        <h:commandLink action="#{nav.goVoteSubmit()}" class="nav-link">Emitir voto</h:commandLink>
+                    </h:form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Consultas</a>
