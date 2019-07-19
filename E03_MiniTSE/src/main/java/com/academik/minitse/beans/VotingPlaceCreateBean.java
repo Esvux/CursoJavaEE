@@ -16,6 +16,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -37,6 +40,8 @@ public class VotingPlaceCreateBean implements Serializable {
     private Long selectedDepartmentId;
     private Long selectedMunicipalityId;
     private String tempName;
+    
+    @Size(min = 10, max = 500, message = "El campo direccion debe tener entre 10 y 500 caracteres")
     private String tempAddress;
     private String tempExtraAddress;
     private Integer tempInitTable;
@@ -132,7 +137,7 @@ public class VotingPlaceCreateBean implements Serializable {
         place.setAddress(tempAddress);
         place.setExtraAddress(tempExtraAddress);
         Municipality m = new Municipality(selectedMunicipalityId);
-        place.setMunicipality(m);
+        place.setMunicipality(m);        
         List<VotingTable> tables = new ArrayList<>();
         for(int i=tempInitTable; i<=tempEndTable; i++) {
             VotingTable t = new VotingTable();

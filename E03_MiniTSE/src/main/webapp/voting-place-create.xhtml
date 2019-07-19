@@ -54,12 +54,18 @@
 
                     <!-- Dirección del centro de votación -->
                     <h:outputText value="Dirección"/>
-                    <h:inputText value="#{votingPlaceCreateBean.tempAddress}" class="w-100"/>
+                    <h:panelGroup layout="block">
+                        <h:inputText id="vp-address" value="#{votingPlaceCreateBean.tempAddress}" class="w-100"/>
+                        <h:message for="vp-address" style="color:red"/>
+                    </h:panelGroup>
 
                     <!-- Dirección extra del centro de votación -->
                     <h:outputText value="Complemento de dirección"/>
-                    <h:inputText value="#{votingPlaceCreateBean.tempExtraAddress}" class="w-100"/>
-
+                    <h:panelGroup>
+                        <h:inputText id="vp-extra-address" value="#{votingPlaceCreateBean.tempExtraAddress}" class="w-100"/>
+                        <h:message for="vp-extra-address" style="color:red"/>
+                    </h:panelGroup>
+                    
                     <!-- Numero inicial de mesas -->
                     <h:outputText value="Mesa inicial"/>
                     <h:inputText value="#{votingPlaceCreateBean.tempInitTable}" class="w-50"/>
@@ -74,7 +80,6 @@
                     value="Crear centro de votación"
                     class="btn btn-primary"
                     action="#{votingPlaceCreateBean.register}">
-                    <f:ajax execute="@form" render="@form" onevent="showSuccessMessage()"/>
                 </h:commandButton>
             </h:form>
         </ui:define>
