@@ -1,6 +1,6 @@
 package com.academik.minitse.dao;
 
-import com.academik.minitse.model.PoliticalParty;
+import com.academik.minitse.model.Vote;
 import java.util.List;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
@@ -13,25 +13,24 @@ import javax.transaction.Transactional;
  * @author esvux
  */
 @RequestScoped
-public class PoliticalPartyDAO {
+public class VoteDAO {
 
     @PersistenceContext(unitName = "MiniTSE_PU")
     EntityManager em;
 
     @Transactional
-    public List<PoliticalParty> findAll() {
+    public List<Vote> findAll() {
         //JPQL
-        TypedQuery<PoliticalParty> query = em.createQuery(
-                "SELECT pp FROM PoliticalParty pp", 
-                PoliticalParty.class
+        TypedQuery<Vote> query = em.createQuery(
+                "SELECT issued FROM Vote issued", 
+                Vote.class
         );
-        List<PoliticalParty> result = query.getResultList();
-        return result;
+        return query.getResultList();
     }
     
     @Transactional
-    public PoliticalParty findById(Long id) {
-        return em.find(PoliticalParty.class, id);
+    public void submit(Vote vote) {
+        em.persist(vote);
     }
 
 }

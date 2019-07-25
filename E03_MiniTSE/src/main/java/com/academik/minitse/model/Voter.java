@@ -42,12 +42,16 @@ public class Voter implements Serializable {
     @Column(name = "direccion_extra")
     private String extraAddress;
     
-    @Column(name = "ya_voto")
+    @Column(name = "ya_voto", nullable = false)
     private Boolean voted;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_mesa")
     private VotingTable table;
+
+    public Voter() {
+        this.voted = false;
+    }
 
     public String getDpi() {
         return dpi;

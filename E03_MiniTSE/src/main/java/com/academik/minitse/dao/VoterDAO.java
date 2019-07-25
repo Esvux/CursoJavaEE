@@ -35,4 +35,14 @@ public class VoterDAO {
         return result;
     }
     
+    @Transactional
+    public Voter findByDPI(String dpi) {
+        return em.find(Voter.class, dpi);
+    }
+
+    @Transactional
+    public void update(Voter v) {
+        em.merge(v);
+    }
+    
 }

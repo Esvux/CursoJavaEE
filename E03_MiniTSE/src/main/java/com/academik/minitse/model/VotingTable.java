@@ -81,7 +81,15 @@ public class VotingTable implements Serializable {
     public void setBlankQuantity(Integer blankQuantity) {
         this.blankQuantity = blankQuantity;
     }
+    
+    public void increaseBlankQuantity() {
+        this.blankQuantity++;
+    }
 
+    public void increaseNullQuantity() {
+        this.nullQuantity++;
+    }
+    
     public VotingPlace getVotingPlace() {
         return votingPlace;
     }
