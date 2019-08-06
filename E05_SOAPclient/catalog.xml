@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/E05_SOAP/CalculadoraService?WSDL" uri="xml-resources/web-service-references/CalculadoraService/wsdl/localhost_8080/E05_SOAP/CalculadoraService.wsdl"/>
+    <system systemId="http://localhost:8080/E05_SOAP/CalculadoraService?xsd=1" uri="xml-resources/web-service-references/CalculadoraService/wsdl/localhost_8080/E05_SOAP/CalculadoraService.xsd_1.xsd"/>
+    <system systemId="https://www.banguat.gob.gt/variables/ws/TipoCambio.asmx?WSDL" uri="xml-resources/web-service-references/TipoCambio/wsdl/www.banguat.gob.gt/variables/ws/TipoCambio.asmx.wsdl"/>
+    <system systemId="https://sdmxcentral.imf.org/ws/public/sdmxapi/soap/sdmxSoap.wsdl" uri="xml-resources/web-service-references/sdmxSoap/wsdl/sdmxcentral.imf.org/ws/public/sdmxapi/soap/sdmxSoap.wsdl"/>
+    <system systemId="http://www.w3.org/2001/XMLSchema" uri="xml-resources/web-service-references/sdmxSoap/wsdl/www.w3.org/2001/XMLSchema.xsd"/>
+</catalog>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-CalculadoraService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CalculadoraService"/>
+        <property name="wsdl-CalculadoraService" location="xml-resources/web-service-references/CalculadoraService/wsdl/localhost_8080/E05_SOAP/CalculadoraService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CalculadoraService" destdir="${build.generated.dir}/jax-wsCache/CalculadoraService" wsdl="${wsdl-CalculadoraService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/E05_SOAP/CalculadoraService?WSDL" xnocompile="true" xendorsed="true" package="com.academik">
+            <depends file="${wsdl-CalculadoraService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CalculadoraService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CalculadoraService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CalculadoraService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/CalculadoraService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/academik"/>
+    </target>
+    <target name="wsimport-client-TipoCambio" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/TipoCambio"/>
+        <property name="wsdl-TipoCambio" location="xml-resources/web-service-references/TipoCambio/wsdl/www.banguat.gob.gt/variables/ws/TipoCambio.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/TipoCambio" destdir="${build.generated.dir}/jax-wsCache/TipoCambio" wsdl="${wsdl-TipoCambio}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="https://www.banguat.gob.gt/variables/ws/TipoCambio.asmx?WSDL" xnocompile="true" xendorsed="true" package="com.academik.banguat">
+            <depends file="${wsdl-TipoCambio}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/TipoCambio"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/TipoCambio">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-TipoCambio" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/TipoCambio"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/academik/banguat"/>
+    </target>
+    <target name="wsimport-client-sdmxSoap" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/sdmxSoap"/>
+        <property name="wsdl-sdmxSoap" location="xml-resources/web-service-references/sdmxSoap/wsdl/sdmxcentral.imf.org/ws/public/sdmxapi/soap/sdmxSoap.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/sdmxSoap" destdir="${build.generated.dir}/jax-wsCache/sdmxSoap" wsdl="${wsdl-sdmxSoap}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="https://sdmxcentral.imf.org/ws/public/sdmxapi/soap/sdmxSoap.wsdl" xnocompile="true" xendorsed="true" package="com.academik.ifm">
+            <depends file="${wsdl-sdmxSoap}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/sdmxSoap"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/sdmxSoap">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-sdmxSoap" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/sdmxSoap"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/academik/ifm"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-CalculadoraService, wsimport-client-TipoCambio, wsimport-client-sdmxSoap"/>
+</project>
