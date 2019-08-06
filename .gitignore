@@ -1,3 +1,5 @@
 nb-configuration.xml
 */target/*
 /E04_MVC/nbproject/
+/E05_SOAPclient/nbproject/private/
+/E05_SOAPclient/build/
