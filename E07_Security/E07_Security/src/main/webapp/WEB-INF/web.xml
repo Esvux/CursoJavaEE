@@ -21,10 +21,6 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
-    <security-role-mapping>
-        <role-name>admin</role-name>
-        <group-name>ADMIN</group-name>
-    </security-role-mapping>
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>TestRealm</realm-name>
@@ -36,7 +32,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>administrator</web-resource-name>
-            <url-pattern>/admin/*</url-pattern>
+            <url-pattern>/faces/admin/*</url-pattern>
             <http-method>POST</http-method>
             <http-method>GET</http-method>
             <http-method>PUT</http-method>
