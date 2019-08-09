@@ -1,17 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Demo JAAS</title>
-    </h:head>
-    <h:body>
-        <form method="POST" action="j_security_check">
-            Username: <input type="text" name="j_username" /><br/>
-            Password: <input type="password" name="j_password" /><br/>
-            <input type="submit" value="Login" /><br/>
-            <input type="reset" value="Reset" /><br/>
-        </form>
-    </h:body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="templates/main.xhtml">
+
+        <ui:define name="content">
+
+            <form method="POST" action="j_security_check">
+                <div class="form-group">
+                    <label for="j_username">Username:</label>
+                    <input type="text" id="j_username" name="j_username" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="j_password">Password:</label>
+                    <input type="password" id="j_password" name="j_password" class="form-control"/>
+                </div>
+                <input type="submit" value="Login" class="btn btn-primary"/>
+                <input type="reset" value="Reset" class="btn" />
+            </form>
+
+        </ui:define>
+    </ui:composition>
+
 </html>
 
